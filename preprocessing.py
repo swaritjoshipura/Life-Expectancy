@@ -49,7 +49,8 @@ def run(filename):
   reduced_data = np.delete(reduced_data, 3, 1)
   column_names = np.delete(column_names, 3, 0)
 
-  return reduced_data, column_names
+  #return reduced_data, column_names
+  return reduced_data, reduced_data[:, 21]
 
 # In[ ]:
 
