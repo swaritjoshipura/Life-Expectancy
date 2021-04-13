@@ -7,12 +7,14 @@ import pcaproj
 reduced_data, column_names = preprocessing.run("lifeexpecdata.csv")
 
 positive_samples = list(np.where(column_names==1.)[0])
-negative_samples = list(np.where(column_names<=0.)[0])
+negative_samples = list(np.where(column_names==-1.)[0])
+mixed_samples = list(np.where(column_names==0.)[0])
 
-samples_in_fold1 = positive_samples[0:824] + negative_samples[0:824]
-samples_in_fold2 = positive_samples[824:] + negative_samples[824:]
+positive_samples.extend(mixed_samples[0:int(len(mixed_samples)//2)])
+negative_samples.extend(mixed_samples[int(len(mixed_samples)//2):])
 
-#print(samples_in_fold2)
+samples_in_fold1 = positive_samples[0:412] + negative_samples[0:412]
+samples_in_fold2 = positive_samples[412:] + negative_samples[412:]
 
 F = 21
 C = 2.0
