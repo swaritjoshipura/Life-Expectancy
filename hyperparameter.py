@@ -14,7 +14,7 @@ samples_in_fold1 = positive_samples[0:250] + negative_samples[0:250]
 samples_in_fold2 = positive_samples[250:] + negative_samples[250:]
 
 C_list = [0.1, 1.0, 10.0]
-B = 22
+B = 21
 y_pred = np.zeros(len(reduced_data),int)
 best_err = 1.1
 best_C = 0.0
