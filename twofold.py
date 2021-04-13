@@ -14,8 +14,8 @@ samples_in_fold2 = positive_samples[250:] + negative_samples[250:]
 
 #print(samples_in_fold2)
 
-F = 22
-C = 1.0
+F = 21
+C = 2.0
 gamma = 1000.0
 
 y_pred = np.zeros(len(reduced_data),int)
