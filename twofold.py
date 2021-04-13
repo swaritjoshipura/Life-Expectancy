@@ -9,8 +9,8 @@ reduced_data, column_names = preprocessing.run("lifeexpecdata.csv")
 positive_samples = list(np.where(column_names==1.)[0])
 negative_samples = list(np.where(column_names<=0.)[0])
 
-samples_in_fold1 = positive_samples[0:250] + negative_samples[0:250]
-samples_in_fold2 = positive_samples[250:] + negative_samples[250:]
+samples_in_fold1 = positive_samples[0:824] + negative_samples[0:824]
+samples_in_fold2 = positive_samples[824:] + negative_samples[824:]
 
 #print(samples_in_fold2)
 
