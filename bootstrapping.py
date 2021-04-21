@@ -8,7 +8,7 @@ def bootstrapping(B,X_subset,y_subset,C):
     for b in range(B):
         train_samples = list(np.random.randint(0,n,n))
         test_samples = list(set(range(n)) - set(train_samples))
-        alg = SVC(C=C,kernel='linear')
+        alg = SVC(C=C,kernel='rbf')
         alg.fit(X_subset[train_samples], y_subset[train_samples])
         bs_err[b] = np.mean(y_subset[test_samples] != alg.predict(X_subset[test_samples]))
     err = np.mean(bs_err)
@@ -42,7 +42,7 @@ def run(data, labels):
     print ("best_C=", best_C)
     
 
-    alg = SVC(C=best_C,kernel='linear')
+    alg = SVC(C=best_C,kernel='rbf')
     alg.fit(data[train_samples], labels[train_samples])
     
     labels_pred[validation_samples] = alg.predict(data[validation_samples])
@@ -57,11 +57,11 @@ def run(data, labels):
     print ("best_C=", best_C)
 
     
-    alg = SVC(C=best_C,kernel='linear')
+    alg = SVC(C=best_C,kernel='rbf')
     alg.fit(data[train_samples], labels[train_samples])
     labels_pred = alg.predict(data[test_samples])
     err = np.mean(labels[test_samples] != np.array([labels_pred]).T)
 
     print("final best err = " + str(err))
 
-    return errors
+    return err
